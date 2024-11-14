@@ -9,6 +9,7 @@ ls.add_snippets("all", {
     s("iff", t("\\textbf{if and only if} ")),
     s("@la", t("\\lambda")),
     s("@de", t("\\delta")),
+    s("@th", t("\\theta")),
     s("ov", fmt([[\overline{<>}<>]],
         {
             i(1, "overlined"), i(2, "")
@@ -35,6 +36,68 @@ ls.add_snippets("all", {
         {
             delimiters = "<>"
         })
+    ),
+    s("br", fmt([[\left(<>\right)<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("sbr", fmt([[\left[<>\right]<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("ssbr", fmt([[\left\{<>\right\}<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("inlmath", fmt([[$<>$<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("lim", fmt([[\displaystyle\lim_{<>}<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("bigcap", fmt([[\displaystyle\bigcap_{<>}^{<>}<>]],
+        {
+            i(1, ""), i(2, ""), i(3, "")
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("bigcup", fmt([[\displaystyle\bigcup_{<>}^{<>}<>]],
+        {
+            i(1, ""), i(2, ""), i(3, "")
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("cup", fmt([[\cup ]],
+    {}, {})
+    ),
+    s("cap", fmt([[\cap ]],
+    {}, {})
     ),
 })
 
