@@ -6,10 +6,58 @@ local i = ls.insert_node
 
 -- TODO switch to just lua files
 ls.add_snippets("all", {
+    -- General maths
+    s("inlmath", fmt([[$<>$<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+    s("lim", fmt([[\displaystyle\lim_{<>}<>]],
+        {
+            i(1, ""), i(2, ""),
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
     s("iff", t("\\textbf{if and only if} ")),
+    s("exercise", fmt([[\begin{exercise}
+    <>
+\end{exercise}]],
+        { i(1, "") },
+        { delimiters = "<>" })
+    ),
+    s("example", fmt([[\begin{example}
+    <>
+\end{example}]],
+        { i(1, "") },
+        { delimiters = "<>" })
+    ),
+    s("exsol", fmt([[\begin{proof}[Solution]
+    <>
+\end{proof}]],
+        { i(1, "") },
+        { delimiters = "<>" })
+    ),
+
+    s("stackrel", fmt([[\stackrel{<>}{<>} <>]],
+        {
+            i(1, ""), i(2, ""), i(3, "")
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+
+    -- Greek
     s("@la", t("\\lambda")),
     s("@de", t("\\delta")),
     s("@th", t("\\theta")),
+    s("@Om", t("\\Omega")),
+
     s("ov", fmt([[\overline{<>}<>]],
         {
             i(1, "overlined"), i(2, "")
@@ -18,6 +66,9 @@ ls.add_snippets("all", {
             delimiters = "<>"
         })
     ),
+
+
+    -- Linear Algebra
     s("ipf", fmt([[\langle <>, <> \rangle <>]],
         {
             i(1, "lhs"), i(2, "rhs"), i(3, "")
@@ -37,6 +88,8 @@ ls.add_snippets("all", {
             delimiters = "<>"
         })
     ),
+
+    -- Brackets
     s("br", fmt([[\left(<>\right)<>]],
         {
             i(1, ""), i(2, ""),
@@ -61,22 +114,8 @@ ls.add_snippets("all", {
             delimiters = "<>"
         })
     ),
-    s("inlmath", fmt([[$<>$<>]],
-        {
-            i(1, ""), i(2, ""),
-        },
-        {
-            delimiters = "<>"
-        })
-    ),
-    s("lim", fmt([[\displaystyle\lim_{<>}<>]],
-        {
-            i(1, ""), i(2, ""),
-        },
-        {
-            delimiters = "<>"
-        })
-    ),
+
+    -- Union and intersection
     s("bigcap", fmt([[\displaystyle\bigcap_{<>}^{<>}<>]],
         {
             i(1, ""), i(2, ""), i(3, "")
@@ -94,11 +133,18 @@ ls.add_snippets("all", {
         })
     ),
     s("cup", fmt([[\cup ]],
-    {}, {})
+        {}, {})
     ),
     s("cap", fmt([[\cap ]],
-    {}, {})
+        {}, {})
     ),
+
+    -- Statistics
+    s("probspace", fmt([[$\left(\Omega, \F, \p\right)$ ]],
+        {}, {})
+    ),
+
+    s("disteq", fmt([[\stackrel{d}{=} ]], {}, { delimiters = "<>" })),
 })
 
 vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
