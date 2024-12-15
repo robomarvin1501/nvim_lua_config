@@ -6,6 +6,14 @@ local i = ls.insert_node
 
 -- TODO switch to just lua files
 ls.add_snippets("all", {
+    s("text", fmt([[\text{<>} <>]],
+        {
+            i(1, "text"), i(2, ""),
+        },
+        {
+            delimiters = "<>",
+        })
+    ),
     -- General maths
     s("inlmath", fmt([[$<>$<>]],
         {
@@ -30,10 +38,10 @@ ls.add_snippets("all", {
         { i(1, "") },
         { delimiters = "<>" })
     ),
-    s("example", fmt([[\begin{example}
+    s("example", fmt([[\begin{example}[<>]
     <>
 \end{example}]],
-        { i(1, "") },
+        { i(1, ""), i(2, "") },
         { delimiters = "<>" })
     ),
     s("exsol", fmt([[\begin{proof}[Solution]
@@ -52,6 +60,23 @@ ls.add_snippets("all", {
         })
     ),
 
+    s("max", fmt([[\displaystyle\max_{<>} \left\{<>\right\} <>]],
+        {
+            i(1, ""), i(2, ""), i(3, "")
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+
+    s("min", fmt([[\displaystyle\min_{<>} \left\{<>\right\} <>]],
+        {
+            i(1, ""), i(2, ""), i(3, "")
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
     -- Greek
     s("@la", t("\\lambda")),
     s("@de", t("\\delta")),
@@ -145,6 +170,8 @@ ls.add_snippets("all", {
     ),
 
     s("disteq", fmt([[\stackrel{d}{=} ]], {}, { delimiters = "<>" })),
+    s("defeq", fmt([[\stackrel{def}{=} ]], {}, { delimiters = "<>" })),
+    s("binom", fmt([[\binom{<>}{<>} <>]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
 })
 
 vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })

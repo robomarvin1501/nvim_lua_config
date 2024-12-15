@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
     {
         "theprimeagen/harpoon",
         branch = "harpoon2",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { { "nvim-lua/plenary.nvim" } }
     }
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
@@ -74,6 +74,8 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+
     use("folke/zen-mode.nvim")
     use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
@@ -88,4 +90,14 @@ return require('packer').startup(function(use)
             vim.g.vimtex_view_method = "zathura"
         end
     }
+
+    -- use {
+    --     "robomarvin1501/file_necromancy",
+    --     as = "file_necromancy",
+    --     config = function ()
+    --         require("file_necromancy").setup({
+    --             enabled_file_extensions = { "latex" },
+    --         })
+    --     end
+    -- }
 end)
