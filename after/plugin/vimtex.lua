@@ -5,3 +5,4 @@ vim.o.conceallevel = 1
 vim.g.tex_conceal = 'abdmg'
 
 vim.keymap.set("n", "<leader>li", string.format(":!make FILENAME=%s<CR>", vim.fn.expand("%:p")));
+vim.keymap.set("n", "<leader>lb", string.format(":!make build FILENAME=%s<CR>", vim.fn.expand("%:p")));
