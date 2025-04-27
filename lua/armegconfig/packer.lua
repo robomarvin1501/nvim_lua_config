@@ -77,7 +77,7 @@ return require('packer').startup(function(use)
     -- use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
     use("folke/zen-mode.nvim")
-    use("github/copilot.vim")
+    -- use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
     use("laytan/cloak.nvim")
 
@@ -100,4 +100,6 @@ return require('packer').startup(function(use)
     --         })
     --     end
     -- }
+
+    use("sevko/vim-nand2tetris-syntax")
 end)
