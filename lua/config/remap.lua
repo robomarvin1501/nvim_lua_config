@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -18,14 +17,18 @@ vim.keymap.set("n", "<leader>svwm", function()
     require("vim-with-me").StopVimWithMe()
 end)
 
+vim.keymap.set("i", "<C-d>", "<C-k>")
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
+vim.keymap.set("n", ":W", ":w")
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -49,3 +52,16 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+vim.keymap.set("n", "<leader>b", function()
+    local filename = vim.fn.expand("%:t") -- get file name
+    local basename = vim.fn.expand("%:r") -- base without extension
+    local ext = vim.fn.expand("%:e")      -- get extension
+
+    if ext == "cpp" then
+        vim.cmd("e " .. basename .. ".h")
+    elseif ext == "h" then
+        vim.cmd("e " .. basename .. ".cpp")
+    else
+        print("Not a .cpp or .h file.")
+    end
+end)

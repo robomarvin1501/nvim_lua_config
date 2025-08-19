@@ -24,7 +24,7 @@ ls.add_snippets("all", {
             delimiters = "<>",
         })
     ),
-    s("@table3", fmt([[\begin{table}[h!]
+    s("@table3", fmt([[\begin{table}[H]
      \centering
      \begin{tabular}{|c|c|c|}
          \hline
@@ -33,11 +33,50 @@ ls.add_snippets("all", {
          <> & <> & <> \\ \hline
          <> & <> & <> \\ \hline
      \end{tabular}
-     \caption{$\delta$}
- \end{table} <>]],
+     \caption{<>}
+\end{table} <>]],
         {
             i(1, ""), i(2, ""), i(3, ""), i(4, ""), i(5, ""), i(6, ""), i(7, ""),
-            i(8, ""), i(9, ""), i(10, ""), i(11, ""), i(12, ""), i(13, "")
+            i(8, ""), i(9, ""), i(10, ""), i(11, ""), i(12, ""), i(13, ""), i(14, "")
+        },
+        {
+            delimiters = "<>",
+        })
+    ),
+    s("@row3", fmt([[ <> & <> & <> \\ \hline ]],
+        {
+            i(1, ""), i(2, ""), i(3, "")
+        },
+        {
+            delimiters = "<>",
+        })
+    ),
+
+    s("@table4", fmt([[\begin{table}[H]
+     \centering
+     \begin{tabular}{|c|c|c|c|}
+         \hline
+         <> & <> & <> & <> \\ \hline
+         <> & <> & <> & <> \\ \hline
+         <> & <> & <> & <> \\ \hline
+         <> & <> & <> & <> \\ \hline
+         <> & <> & <> & <> \\ \hline
+     \end{tabular}
+     \caption{<>}
+\end{table} <>]],
+        {
+            i(1, ""), i(2, ""), i(3, ""), i(4, ""), i(5, ""), i(6, ""), i(7, ""),
+            i(8, ""), i(9, ""), i(10, ""), i(11, ""), i(12, ""), i(13, ""), i(14, ""),
+            i(15, ""), i(16, ""),
+            i(17, ""), i(18, ""), i(19, ""), i(20, ""), i(21, ""), i(22, ""),
+        },
+        {
+            delimiters = "<>",
+        })
+    ),
+    s("@row4", fmt([[ <> & <> & <> & <> \\ \hline ]],
+        {
+            i(1, ""), i(2, ""), i(3, ""), i(4, ""),
         },
         {
             delimiters = "<>",
@@ -107,7 +146,7 @@ ls.add_snippets("all", {
         })
     ),
 
-    s("@hat", fmt([[\hat{<>} <>]],
+    s("@hat", fmt([[\hat{<>}<>]],
         {
             i(1, ""), i(2, "")
         },
@@ -144,6 +183,15 @@ ls.add_snippets("all", {
     ),
 
     s("@curly", fmt([[\mathcal{<>} <>]],
+        {
+            i(1, ""), i(2, "")
+        },
+        {
+            delimiters = "<>"
+        })
+    ),
+
+    s("@norm", fmt([[\left|\left|<>\right|\right|<>]],
         {
             i(1, ""), i(2, "")
         },
@@ -327,6 +375,6 @@ ls.add_snippets("all", {
 
 })
 
-vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
+-- vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })

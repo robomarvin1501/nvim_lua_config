@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
+    use("airblade/vim-gitgutter")
     use("nvim-treesitter/nvim-treesitter-context");
 
     use {
@@ -92,14 +93,15 @@ return require('packer').startup(function(use)
     }
 
     -- use {
-    --     "robomarvin1501/file_necromancy",
-    --     as = "file_necromancy",
-    --     config = function ()
+    --     "robomarvin1501/gitgeist",
+    --     config = function()
     --         require("file_necromancy").setup({
-    --             enabled_file_extensions = { "latex" },
+    --             enabled_file_extensions = { "txt" },
     --         })
     --     end
     -- }
 
     use("sevko/vim-nand2tetris-syntax")
+
+    -- use("rgroli/other.nvim")
 end)
