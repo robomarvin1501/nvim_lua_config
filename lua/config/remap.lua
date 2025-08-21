@@ -65,3 +65,4 @@ vim.keymap.set("n", "<leader>b", function()
         print("Not a .cpp or .h file.")
     end
 end)
+
