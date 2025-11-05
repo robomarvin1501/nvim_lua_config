@@ -1,5 +1,18 @@
 require("config")
 
+local autoformat_enabled = true
+
+local function toggle_autoformat()
+    autoformat_enabled = not autoformat_enabled
+    if autoformat_enabled then
+        vim.notify("Auto-format: ENABLED", vim.log.levels.INFO)
+    else
+        vim.notify("Auto-format: DISABLED", vim.log.levels.INFO)
+    end
+end
+
+vim.keymap.set("n", "<leader>af", toggle_autoformat, { desc = "Toggle formatting on save" })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking text",
     group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -23,6 +36,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
                 buffer = args.buf,
                 callback = function()
+                    if not autoformat_enabled then
+                        return
+                    end
                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
                 end,
             })

@@ -90,6 +90,8 @@ return {
                     --  To jump back, press <C-t>.
                     map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
+                    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.
                     map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -216,7 +218,7 @@ return {
                 --    https://github.com/pmizio/typescript-tools.nvim
                 --
                 -- But for many setups, the LSP (`ts_ls`) will work just fine
-                -- ts_ls = {},
+                ts_ls = {},
                 --
 
                 -- rust_analyzer = {},
@@ -261,6 +263,7 @@ return {
                 automatic_installation = false,
                 handlers = {
                     function(server_name)
+                        print("Setting up LSP for: ", server_name)
                         local server = servers[server_name] or {}
                         -- This handles overriding only values explicitly passed
                         -- by the server configuration above. Useful when disabling
