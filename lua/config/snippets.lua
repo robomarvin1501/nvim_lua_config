@@ -577,7 +577,7 @@ ls.add_snippets("tex", {
     s("@hatht", fmt([[\hat{\mathcal{H}}_{\Theta} ]], {}, { delimiters = "<>" })),
     s("@hatfs", fmt([[\hat{f}_S ]], {}, { delimiters = "<>" })),
 
-    s("@diff", fmt([[\displaystyl\frac{d<>}{d<>}<> ]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
+    s("@diff", fmt([[\displaystyle\frac{d<>}{d<>}<> ]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
     s(
         "@partialdiff",
         fmt(
