@@ -24,3 +24,6 @@ subsubsection
 define/!
 define
 Rasterisation
+distinguisher
+goodput
+Poisson

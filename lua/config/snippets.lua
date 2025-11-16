@@ -312,6 +312,16 @@ ls.add_snippets("tex", {
         })
     ),
 
+    s(
+        "pwr",
+        fmt([[^{<>}<>]], {
+            i(1, ""),
+            i(2, ""),
+        }, {
+            delimiters = "<>",
+        })
+    ),
+
     -- Greek
     s("@la", t("\\lambda")),
     s("@de", t("\\delta")),
@@ -577,7 +587,7 @@ ls.add_snippets("tex", {
     s("@hatht", fmt([[\hat{\mathcal{H}}_{\Theta} ]], {}, { delimiters = "<>" })),
     s("@hatfs", fmt([[\hat{f}_S ]], {}, { delimiters = "<>" })),
 
-    s("@diff", fmt([[\displaystyl\frac{d<>}{d<>}<> ]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
+    s("@diff", fmt([[\displaystyle\frac{d<>}{d<>}<> ]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
     s(
         "@partialdiff",
         fmt(
@@ -599,6 +609,9 @@ ls.add_snippets("tex", {
             { delimiters = "<>" }
         )
     ),
+
+    -- Crypto
+    s("encscheme", fmt([[$\Pi = \left(KeyGen, Enc, Dec\right)$ ]], {}, {})),
 })
 
 -- vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
