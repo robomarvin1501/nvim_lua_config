@@ -6,15 +6,15 @@ local i = ls.insert_node
 
 -- TODO switch to just lua files
 ls.add_snippets("tex", {
-    --     s(
-    --         "text",
-    --         fmt([[\text{<>} <>]], {
-    --             i(1, "text"),
-    --             i(2, ""),
-    --         }, {
-    --             delimiters = "<>",
-    --         })
-    --     ),
+    s(
+        "text",
+        fmt([[\text{<>}<>]], {
+            i(1, ""),
+            i(2, ""),
+        }, {
+            delimiters = "<>",
+        })
+    ),
     --     s(
     --         "bold",
     --         fmt([[\textbf{<>} <>]], {
@@ -43,6 +43,26 @@ ls.add_snippets("tex", {
     --         })
     --     ),
     s(
+        "inclgraphics",
+        fmt(
+            [[\begin{figure}[H]
+    \center
+    \includegraphics[scale=0.2]{<>}
+    \caption{<>}
+\end{figure}
+<>
+]],
+            {
+                i(1, "path"),
+                i(2, ""),
+                i(3, ""),
+            },
+            {
+                delimiters = "<>",
+            }
+        )
+    ),
+    s(
         "@mcal",
         fmt([[\mathcal{<>}<>]], {
             i(1, "text"),
@@ -52,26 +72,20 @@ ls.add_snippets("tex", {
         })
     ),
     s(
-        "gather",
-        fmt(
-            [[\begin{gather*}
-    <>
-\end{gather*}<>]],
-            {
-                i(1, "text"),
-                i(2, ""),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
+        "@mbbm",
+        fmt([[\mathbbm{<>}<>]], {
+            i(1, "text"),
+            i(2, ""),
+        }, {
+            delimiters = "<>",
+        })
     ),
     s(
         "@table3",
         fmt(
             [[\begin{table}[H]
      \centering
-     \begin{tabular}{|c|c|c|}
+     \begin{tabular}{|p{0.27\textwidth}|p{0.27\textwidth}|p{0.27\textwidth}|}
          \hline
          <> & <> & <> \\ \hline
          <> & <> & <> \\ \hline
@@ -117,7 +131,7 @@ ls.add_snippets("tex", {
         fmt(
             [[\begin{table}[H]
      \centering
-     \begin{tabular}{|c|c|c|c|}
+     \begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
          \hline
          <> & <> & <> & <> \\ \hline
          <> & <> & <> & <> \\ \hline
@@ -253,7 +267,7 @@ ls.add_snippets("tex", {
 
     s(
         "@hat",
-        fmt([[\hat{<>}<>]], {
+        fmt([[\widehat{<>}<>]], {
             i(1, ""),
             i(2, ""),
         }, {
@@ -263,7 +277,7 @@ ls.add_snippets("tex", {
 
     s(
         "@tilde",
-        fmt([[\widetilde{<>} <>]], {
+        fmt([[\widetilde{<>}<>]], {
             i(1, ""),
             i(2, ""),
         }, {
@@ -483,6 +497,42 @@ ls.add_snippets("tex", {
             }
         )
     ),
+    s(
+        "2vec",
+        fmt(
+            [[\begin{bmatrix}
+    <> \\
+    <> \\
+\end{bmatrix}<>]],
+            {
+                i(1, "a"),
+                i(2, "b"),
+                i(3, ""),
+            },
+            {
+                delimiters = "<>",
+            }
+        )
+    ),
+    s(
+        "3vec",
+        fmt(
+            [[\begin{bmatrix}
+    <> \\
+    <> \\
+    <> \\
+\end{bmatrix}<>]],
+            {
+                i(1, "a"),
+                i(2, "b"),
+                i(3, "c"),
+                i(4, ""),
+            },
+            {
+                delimiters = "<>",
+            }
+        )
+    ),
 
     -- Brackets
     s(
@@ -612,6 +662,16 @@ ls.add_snippets("tex", {
 
     -- Crypto
     s("encscheme", fmt([[$\Pi = \left(KeyGen, Enc, Dec\right)$ ]], {}, {})),
+    s("macscheme", fmt([[$\Pi = \left(Gen, Mac, \text{Vrfy}\right)$ ]], {}, { delimiters = "<>" })),
+    s("signscheme", fmt([[$\Pi = \left(Gen, \text{Sign}, \text{Vrfy}\right)$ ]], {}, { delimiters = "<>" })),
+    s(
+        "INDS",
+        fmt(
+            [[IND_{\Pi, \mathcal{<>}}^{<>} \left(<>\right)<>]],
+            { i(1, ""), i(2, ""), i(3, ""), i(4, "") },
+            { delimiters = "<>" }
+        )
+    ),
 })
 
 -- vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
