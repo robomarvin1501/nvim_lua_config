@@ -672,6 +672,10 @@ ls.add_snippets("tex", {
             { delimiters = "<>" }
         )
     ),
+
+    -- Quantum computation
+    s("ket", fmt([[\ket{<>}<>]], { i(1, ""), i(2, "") }, { delimiters = "<>" })),
+    s("bra", fmt([[\bra{<>}<>]], { i(1, ""), i(2, "") }, { delimiters = "<>" })),
 })
 
 -- vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
