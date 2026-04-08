@@ -2,9 +2,21 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        main = "nvim-treesitter.configs",
+        main = "nvim-treesitter",
         opts = {
-            ensure_installed = {
+            auto_install = true,
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    -- Enable treesitter highlighting, and disable regex syntax
+                    pcall(vim.treesitter.start)
+                    -- Enable teresitter indentation
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
+            })
+
+            local ensure_installed = {
                 "bash",
                 "c",
                 "diff",
@@ -16,14 +28,15 @@ return {
                 "query",
                 "vim",
                 "vimdoc",
-            },
-            auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = { "ruby" },
-                disable = { "latex", "tex" },
-            },
-            indent = { enable = true, disable = { "ruby" } },
-        },
+            }
+
+            local alread_installed = require("nvim-treesitter.config").get_installed()
+            local parsers_to_install = vim.iter(ensure_installed)
+                :filter(function(parser)
+                    return not vim.tbl_contains(alread_installed, parser)
+                end)
+                :totable()
+            require("nvim-treesitter").install(parsers_to_install)
+        end,
     },
 }
