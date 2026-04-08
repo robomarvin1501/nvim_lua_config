@@ -57,3 +57,11 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.textwidth = 80
     end,
 })
+
+-- Cleanup Vimtex on exit
+vim.api.nvim_create_autocmd("User", {
+    desc = "Cleanup on exit",
+    pattern = "VimtexEventQuit",
+    group = vim.api.nvim_create_augroup("init_vimtex", {}),
+    command = "VimtexClean",
+})
