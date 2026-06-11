@@ -1,5 +1,7 @@
 require("config")
 
+RunningTypst = False
+
 local autoformat_enabled = true
 
 local function toggle_autoformat()
@@ -56,6 +58,11 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt.colorcolumn = "80"
         vim.opt.textwidth = 80
     end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "typst",
+    callback = StartTypstWatchAndOpenZathura,
 })
 
 -- Cleanup Vimtex on exit

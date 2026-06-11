@@ -6,84 +6,84 @@ local i = ls.insert_node
 
 -- TODO switch to just lua files
 ls.add_snippets("tex", {
-    s(
-        "text",
-        fmt([[\text{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    --     s(
-    --         "bold",
-    --         fmt([[\textbf{<>} <>]], {
-    --             i(1, "text"),
-    --             i(2, ""),
-    --         }, {
-    --             delimiters = "<>",
-    --         })
-    --     ),
-    --     s(
-    --         "italic",
-    --         fmt([[\textit{<>} <>]], {
-    --             i(1, "text"),
-    --             i(2, ""),
-    --         }, {
-    --             delimiters = "<>",
-    --         })
-    --     ),
-    --     s(
-    --         "enqu",
-    --         fmt([[\enquote{<>} <>]], {
-    --             i(1, "text"),
-    --             i(2, ""),
-    --         }, {
-    --             delimiters = "<>",
-    --         })
-    --     ),
-    s(
-        "inclgraphics",
-        fmt(
-            [[\begin{figure}[H]
+	s(
+		"text",
+		fmt([[\text{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	--     s(
+	--         "bold",
+	--         fmt([[\textbf{<>} <>]], {
+	--             i(1, "text"),
+	--             i(2, ""),
+	--         }, {
+	--             delimiters = "<>",
+	--         })
+	--     ),
+	--     s(
+	--         "italic",
+	--         fmt([[\textit{<>} <>]], {
+	--             i(1, "text"),
+	--             i(2, ""),
+	--         }, {
+	--             delimiters = "<>",
+	--         })
+	--     ),
+	--     s(
+	--         "enqu",
+	--         fmt([[\enquote{<>} <>]], {
+	--             i(1, "text"),
+	--             i(2, ""),
+	--         }, {
+	--             delimiters = "<>",
+	--         })
+	--     ),
+	s(
+		"inclgraphics",
+		fmt(
+			[[\begin{figure}[H]
     \center
     \includegraphics[scale=0.2]{<>}
     \caption{<>}
 \end{figure}
 <>
 ]],
-            {
-                i(1, "path"),
-                i(2, ""),
-                i(3, ""),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "@mcal",
-        fmt([[\mathcal{<>}<>]], {
-            i(1, "text"),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "@mbbm",
-        fmt([[\mathbbm{<>}<>]], {
-            i(1, "text"),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "@table3",
-        fmt(
-            [[\begin{table}[H]
+			{
+				i(1, "path"),
+				i(2, ""),
+				i(3, ""),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"@mcal",
+		fmt([[\mathcal{<>}<>]], {
+			i(1, "text"),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"@mbbm",
+		fmt([[\mathbbm{<>}<>]], {
+			i(1, "text"),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"@table3",
+		fmt(
+			[[\begin{table}[H]
      \centering
      \begin{tabular}{|p{0.27\textwidth}|p{0.27\textwidth}|p{0.27\textwidth}|}
          \hline
@@ -94,42 +94,42 @@ ls.add_snippets("tex", {
      \end{tabular}
      \caption{<>}
 \end{table} <>]],
-            {
-                i(1, ""),
-                i(2, ""),
-                i(3, ""),
-                i(4, ""),
-                i(5, ""),
-                i(6, ""),
-                i(7, ""),
-                i(8, ""),
-                i(9, ""),
-                i(10, ""),
-                i(11, ""),
-                i(12, ""),
-                i(13, ""),
-                i(14, ""),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "@row3",
-        fmt([[ <> & <> & <> \\ \hline ]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+			{
+				i(1, ""),
+				i(2, ""),
+				i(3, ""),
+				i(4, ""),
+				i(5, ""),
+				i(6, ""),
+				i(7, ""),
+				i(8, ""),
+				i(9, ""),
+				i(10, ""),
+				i(11, ""),
+				i(12, ""),
+				i(13, ""),
+				i(14, ""),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"@row3",
+		fmt([[ <> & <> & <> \\ \hline ]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "@table4",
-        fmt(
-            [[\begin{table}[H]
+	s(
+		"@table4",
+		fmt(
+			[[\begin{table}[H]
      \centering
      \begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
          \hline
@@ -141,547 +141,631 @@ ls.add_snippets("tex", {
      \end{tabular}
      \caption{<>}
 \end{table} <>]],
-            {
-                i(1, ""),
-                i(2, ""),
-                i(3, ""),
-                i(4, ""),
-                i(5, ""),
-                i(6, ""),
-                i(7, ""),
-                i(8, ""),
-                i(9, ""),
-                i(10, ""),
-                i(11, ""),
-                i(12, ""),
-                i(13, ""),
-                i(14, ""),
-                i(15, ""),
-                i(16, ""),
-                i(17, ""),
-                i(18, ""),
-                i(19, ""),
-                i(20, ""),
-                i(21, ""),
-                i(22, ""),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "@row4",
-        fmt([[ <> & <> & <> & <> \\ \hline ]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-            i(4, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    -- General maths
-    s(
-        "inlmath",
-        fmt([[$<>$<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "lim",
-        fmt([[\displaystyle\lim_{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s("iff", t("\\textbf{if and only if} ")),
-    s(
-        "exercise",
-        fmt(
-            [[\begin{exercise}
+			{
+				i(1, ""),
+				i(2, ""),
+				i(3, ""),
+				i(4, ""),
+				i(5, ""),
+				i(6, ""),
+				i(7, ""),
+				i(8, ""),
+				i(9, ""),
+				i(10, ""),
+				i(11, ""),
+				i(12, ""),
+				i(13, ""),
+				i(14, ""),
+				i(15, ""),
+				i(16, ""),
+				i(17, ""),
+				i(18, ""),
+				i(19, ""),
+				i(20, ""),
+				i(21, ""),
+				i(22, ""),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"@row4",
+		fmt([[ <> & <> & <> & <> \\ \hline ]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+			i(4, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	-- General maths
+	s(
+		"inlmath",
+		fmt([[$<>$<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"lim",
+		fmt([[\displaystyle\lim_{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s("iff", t("\\textbf{if and only if} ")),
+	s(
+		"exercise",
+		fmt(
+			[[\begin{exercise}
     <>
 \end{exercise}]],
-            { i(1, "") },
-            { delimiters = "<>" }
-        )
-    ),
-    s(
-        "example",
-        fmt(
-            [[\begin{example}[<>]
+			{ i(1, "") },
+			{ delimiters = "<>" }
+		)
+	),
+	s(
+		"example",
+		fmt(
+			[[\begin{example}[<>]
     <>
 \end{example}]],
-            { i(1, ""), i(2, "") },
-            { delimiters = "<>" }
-        )
-    ),
-    s(
-        "exsol",
-        fmt(
-            [[\begin{proof}[Solution]
+			{ i(1, ""), i(2, "") },
+			{ delimiters = "<>" }
+		)
+	),
+	s(
+		"exsol",
+		fmt(
+			[[\begin{proof}[Solution]
     <>
 \end{proof}]],
-            { i(1, "") },
-            { delimiters = "<>" }
-        )
-    ),
+			{ i(1, "") },
+			{ delimiters = "<>" }
+		)
+	),
 
-    s(
-        "stackrel",
-        fmt([[\stackrel{<>}{<>} <>]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"stackrel",
+		fmt([[\stackrel{<>}{<>} <>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "max",
-        fmt([[\displaystyle\max_{<>} \left\{<>\right\} <>]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"max",
+		fmt([[\displaystyle\max_{<>} \left\{<>\right\} <>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "min",
-        fmt([[\displaystyle\min_{<>} \left\{<>\right\} <>]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"min",
+		fmt([[\displaystyle\min_{<>} \left\{<>\right\} <>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "@hat",
-        fmt([[\widehat{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"@hat",
+		fmt([[\widehat{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "@tilde",
-        fmt([[\widetilde{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"@tilde",
+		fmt([[\widetilde{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "sqrt",
-        fmt([[\sqrt{<>} <>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"sqrt",
+		fmt([[\sqrt{<>} <>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "pilarge",
-        fmt([[\displaystyle\prod_{<>}^{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"pilarge",
+		fmt([[\displaystyle\prod_{<>}^{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "@curly",
-        fmt([[\mathcal{<>} <>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"@curly",
+		fmt([[\mathcal{<>} <>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "@norm",
-        fmt([[\left|\left|<>\right|\right|<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"@norm",
+		fmt([[\left|\left|<>\right|\right|<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    s(
-        "pwr",
-        fmt([[^{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"pwr",
+		fmt([[^{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    -- Greek
-    s("@la", t("\\lambda")),
-    s("@de", t("\\delta")),
-    s("@th", t("\\theta")),
-    s("@Om", t("\\Omega")),
-    s("sig", t("\\sigma")),
+	-- Greek
+	s("@la", t("\\lambda")),
+	s("@de", t("\\delta")),
+	s("@th", t("\\theta")),
+	s("@Om", t("\\Omega")),
+	s("sig", t("\\sigma")),
 
-    s(
-        "ov",
-        fmt([[\overline{<>}<>]], {
-            i(1, "overlined"),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	s(
+		"ov",
+		fmt([[\overline{<>}<>]], {
+			i(1, "overlined"),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    -- Linear Algebra
-    s(
-        "ipf",
-        fmt([[\left\langle <>, <> \right\rangle <>]], {
-            i(1, "lhs"),
-            i(2, "rhs"),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "2b2",
-        fmt(
-            [[\begin{bmatrix}
+	-- Linear Algebra
+	s(
+		"ipf",
+		fmt([[\left\langle <>, <> \right\rangle <>]], {
+			i(1, "lhs"),
+			i(2, "rhs"),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"2b2",
+		fmt(
+			[[\begin{bmatrix}
     <> & <> \\
     <> & <>
 \end{bmatrix}]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-                i(3, "c"),
-                i(4, "d"),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "3b3",
-        fmt(
-            [[\begin{bmatrix}
+			{
+				i(1, "a"),
+				i(2, "b"),
+				i(3, "c"),
+				i(4, "d"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"3b3",
+		fmt(
+			[[\begin{bmatrix}
     <> & <> & <> \\
     <> & <> & <> \\
     <> & <> & <>
 \end{bmatrix}]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-                i(3, "c"),
-                i(4, "d"),
-                i(5, "e"),
-                i(6, "f"),
-                i(7, "g"),
-                i(8, "h"),
-                i(9, "i"),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "4b4",
-        fmt(
-            [[\begin{bmatrix}
+			{
+				i(1, "a"),
+				i(2, "b"),
+				i(3, "c"),
+				i(4, "d"),
+				i(5, "e"),
+				i(6, "f"),
+				i(7, "g"),
+				i(8, "h"),
+				i(9, "i"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"4b4",
+		fmt(
+			[[\begin{bmatrix}
     <> & <> & <> & <> \\
     <> & <> & <> & <> \\
     <> & <> & <> & <> \\
     <> & <> & <> & <>
 \end{bmatrix}]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-                i(3, "c"),
-                i(4, "d"),
-                i(5, "e"),
-                i(6, "f"),
-                i(7, "g"),
-                i(8, "h"),
-                i(9, "i"),
-                i(10, "j"),
-                i(11, "k"),
-                i(12, "l"),
-                i(13, "m"),
-                i(14, "n"),
-                i(15, "o"),
-                i(16, "p"),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "5b5",
-        fmt(
-            [[\begin{bmatrix}
+			{
+				i(1, "a"),
+				i(2, "b"),
+				i(3, "c"),
+				i(4, "d"),
+				i(5, "e"),
+				i(6, "f"),
+				i(7, "g"),
+				i(8, "h"),
+				i(9, "i"),
+				i(10, "j"),
+				i(11, "k"),
+				i(12, "l"),
+				i(13, "m"),
+				i(14, "n"),
+				i(15, "o"),
+				i(16, "p"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"5b5",
+		fmt(
+			[[\begin{bmatrix}
     <> & <> & <> & <> & <> \\
     <> & <> & <> & <> & <> \\
     <> & <> & <> & <> & <> \\
     <> & <> & <> & <> & <> \\
     <> & <> & <> & <> & <>
 \end{bmatrix}]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-                i(3, "c"),
-                i(4, "d"),
-                i(5, "e"),
-                i(6, "f"),
-                i(7, "g"),
-                i(8, "h"),
-                i(9, "i"),
-                i(10, "j"),
-                i(11, "k"),
-                i(12, "l"),
-                i(13, "m"),
-                i(14, "n"),
-                i(15, "o"),
-                i(16, "p"),
-                i(17, "q"),
-                i(18, "r"),
-                i(19, "s"),
-                i(20, "t"),
-                i(21, "u"),
-                i(22, "v"),
-                i(23, "w"),
-                i(24, "x"),
-                i(25, "y"),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "@vec",
-        fmt(
-            [[\begin{bmatrix}
+			{
+				i(1, "a"),
+				i(2, "b"),
+				i(3, "c"),
+				i(4, "d"),
+				i(5, "e"),
+				i(6, "f"),
+				i(7, "g"),
+				i(8, "h"),
+				i(9, "i"),
+				i(10, "j"),
+				i(11, "k"),
+				i(12, "l"),
+				i(13, "m"),
+				i(14, "n"),
+				i(15, "o"),
+				i(16, "p"),
+				i(17, "q"),
+				i(18, "r"),
+				i(19, "s"),
+				i(20, "t"),
+				i(21, "u"),
+				i(22, "v"),
+				i(23, "w"),
+				i(24, "x"),
+				i(25, "y"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"@vec",
+		fmt(
+			[[\begin{bmatrix}
     <> \\
     \vdots \\
     <> \\
 \end{bmatrix}]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "2vec",
-        fmt(
-            [[\begin{bmatrix}
+			{
+				i(1, "a"),
+				i(2, "b"),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"2vec",
+		fmt(
+			[[\begin{bmatrix}
     <> \\
     <> \\
 \end{bmatrix}<>]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-                i(3, ""),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
-    s(
-        "3vec",
-        fmt(
-            [[\begin{bmatrix}
+			{
+				i(1, "a"),
+				i(2, "b"),
+				i(3, ""),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
+	s(
+		"3vec",
+		fmt(
+			[[\begin{bmatrix}
     <> \\
     <> \\
     <> \\
 \end{bmatrix}<>]],
-            {
-                i(1, "a"),
-                i(2, "b"),
-                i(3, "c"),
-                i(4, ""),
-            },
-            {
-                delimiters = "<>",
-            }
-        )
-    ),
+			{
+				i(1, "a"),
+				i(2, "b"),
+				i(3, "c"),
+				i(4, ""),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
 
-    -- Brackets
-    s(
-        "br",
-        fmt([[\left(<>\right)<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "abr",
-        fmt([[\left\langle <> \right\rangle<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "sbr",
-        fmt([[\left[<>\right]<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "ssbr",
-        fmt([[\left\{<>\right\}<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "abs",
-        fmt([[\left|<>\right|<>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "@floor",
-        fmt([[\left\lfloor <> \right\rfloor <>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "@ceil",
-        fmt([[\left\lceil <> \right\rceil <>]], {
-            i(1, ""),
-            i(2, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
+	-- Brackets
+	s(
+		"br",
+		fmt([[\left(<>\right)<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"abr",
+		fmt([[\left\langle <> \right\rangle<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"sbr",
+		fmt([[\left[<>\right]<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"ssbr",
+		fmt([[\left\{<>\right\}<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"abs",
+		fmt([[\left|<>\right|<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"@floor",
+		fmt([[\left\lfloor <> \right\rfloor <>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"@ceil",
+		fmt([[\left\lceil <> \right\rceil <>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 
-    -- Union and intersection
-    s(
-        "bigcap",
-        fmt([[\displaystyle\bigcap_{<>}^{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s(
-        "bigcup",
-        fmt([[\displaystyle\bigcup_{<>}^{<>}<>]], {
-            i(1, ""),
-            i(2, ""),
-            i(3, ""),
-        }, {
-            delimiters = "<>",
-        })
-    ),
-    s("cup", fmt([[\cup ]], {}, {})),
-    s("cap", fmt([[\cap ]], {}, {})),
+	-- Union and intersection
+	s(
+		"bigcap",
+		fmt([[\displaystyle\bigcap_{<>}^{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"bigcup",
+		fmt([[\displaystyle\bigcup_{<>}^{<>}<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s("cup", fmt([[\cup ]], {}, {})),
+	s("cap", fmt([[\cap ]], {}, {})),
 
-    -- Statistics
-    s("probspace", fmt([[$\left(\Omega, \F, \p\right)$ ]], {}, {})),
+	-- Statistics
+	s("probspace", fmt([[$\left(\Omega, \F, \p\right)$ ]], {}, {})),
 
-    s("disteq", fmt([[\stackrel{d}{=} ]], {}, { delimiters = "<>" })),
-    s("distto", fmt([[\stackrel{d}{\to} ]], {}, { delimiters = "<>" })),
-    s("defeq", fmt([[\stackrel{def}{=} ]], {}, { delimiters = "<>" })),
-    s("aseq", fmt([[\stackrel{a.s}{=} ]], {}, { delimiters = "<>" })),
-    s("binom", fmt([[\binom{<>}{<>} <>]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
+	s("disteq", fmt([[\stackrel{d}{=} ]], {}, { delimiters = "<>" })),
+	s("distto", fmt([[\stackrel{d}{\to} ]], {}, { delimiters = "<>" })),
+	s("defeq", fmt([[\stackrel{def}{=} ]], {}, { delimiters = "<>" })),
+	s("aseq", fmt([[\stackrel{a.s}{=} ]], {}, { delimiters = "<>" })),
+	s("binom", fmt([[\binom{<>}{<>} <>]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
 
-    -- IML
-    s("@ht", fmt([[\mathcal{H}_{\Theta} ]], {}, { delimiters = "<>" })),
-    s("@hatht", fmt([[\hat{\mathcal{H}}_{\Theta} ]], {}, { delimiters = "<>" })),
-    s("@hatfs", fmt([[\hat{f}_S ]], {}, { delimiters = "<>" })),
+	-- IML
+	s("@ht", fmt([[\mathcal{H}_{\Theta} ]], {}, { delimiters = "<>" })),
+	s("@hatht", fmt([[\hat{\mathcal{H}}_{\Theta} ]], {}, { delimiters = "<>" })),
+	s("@hatfs", fmt([[\hat{f}_S ]], {}, { delimiters = "<>" })),
 
-    s("@diff", fmt([[\displaystyle\frac{d<>}{d<>}<> ]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
-    s(
-        "@partialdiff",
-        fmt(
-            [[\displaystyle\frac{\partial <>}{\partial <>}<> ]],
-            { i(1, ""), i(2, ""), i(3, "") },
-            { delimiters = "<>" }
-        )
-    ),
+	s("@diff", fmt([[\displaystyle\frac{d<>}{d<>}<> ]], { i(1, ""), i(2, ""), i(3, "") }, { delimiters = "<>" })),
+	s(
+		"@partialdiff",
+		fmt(
+			[[\displaystyle\frac{\partial <>}{\partial <>}<> ]],
+			{ i(1, ""), i(2, ""), i(3, "") },
+			{ delimiters = "<>" }
+		)
+	),
 
-    -- OS
-    s("@inlinecode", fmt([[\lstinline[columns=fixed]{<>}<>]], { i(1, "code"), i(2, "") }, { delimiters = "<>" })),
-    s(
-        "@codeblock",
-        fmt(
-            [[\begin{lstlisting}
+	-- OS
+	s("@inlinecode", fmt([[\lstinline[columns=fixed]{<>}<>]], { i(1, "code"), i(2, "") }, { delimiters = "<>" })),
+	s(
+		"@codeblock",
+		fmt(
+			[[\begin{lstlisting}
     <>
 \end{lstlisting}<>]],
-            { i(1, "code"), i(2, "") },
-            { delimiters = "<>" }
-        )
-    ),
+			{ i(1, "code"), i(2, "") },
+			{ delimiters = "<>" }
+		)
+	),
 
-    -- Crypto
-    s("encscheme", fmt([[$\Pi = \left(KeyGen, Enc, Dec\right)$ ]], {}, {})),
-    s("macscheme", fmt([[$\Pi = \left(Gen, Mac, \text{Vrfy}\right)$ ]], {}, { delimiters = "<>" })),
-    s("signscheme", fmt([[$\Pi = \left(Gen, \text{Sign}, \text{Vrfy}\right)$ ]], {}, { delimiters = "<>" })),
-    s(
-        "INDS",
-        fmt(
-            [[IND_{\Pi, \mathcal{<>}}^{<>} \left(<>\right)<>]],
-            { i(1, ""), i(2, ""), i(3, ""), i(4, "") },
-            { delimiters = "<>" }
-        )
-    ),
+	-- Crypto
+	s("encscheme", fmt([[$\Pi = \left(KeyGen, Enc, Dec\right)$ ]], {}, {})),
+	s("macscheme", fmt([[$\Pi = \left(Gen, Mac, \text{Vrfy}\right)$ ]], {}, { delimiters = "<>" })),
+	s("signscheme", fmt([[$\Pi = \left(Gen, \text{Sign}, \text{Vrfy}\right)$ ]], {}, { delimiters = "<>" })),
+	s(
+		"INDS",
+		fmt(
+			[[IND_{\Pi, \mathcal{<>}}^{<>} \left(<>\right)<>]],
+			{ i(1, ""), i(2, ""), i(3, ""), i(4, "") },
+			{ delimiters = "<>" }
+		)
+	),
 
-    -- Quantum computation
-    s("ket", fmt([[\ket{<>}<>]], { i(1, ""), i(2, "") }, { delimiters = "<>" })),
-    s("bra", fmt([[\bra{<>}<>]], { i(1, ""), i(2, "") }, { delimiters = "<>" })),
+	-- Quantum computation
+	s("ket", fmt([[\ket{<>}<>]], { i(1, ""), i(2, "") }, { delimiters = "<>" })),
+	s("bra", fmt([[\bra{<>}<>]], { i(1, ""), i(2, "") }, { delimiters = "<>" })),
+})
+
+ls.add_snippets("typst", {
+	s(
+		"matalg",
+		fmt([[$chevron.l <>, <>, <>; <> chevron.r$<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+			i(4, ""),
+			i(5, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"chevvie",
+		fmt([[lr(chevron.l <>, <>, <> chevron.r)<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+			i(4, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"abr",
+		fmt([[lr(chevron.l <> chevron.r)<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"to",
+		fmt([[ ^ (<>)<>]], {
+			i(1, ""),
+			i(2, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"bigxor",
+		fmt([[xor.big_(<>)^(<>)<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"bigplus",
+		fmt([[plus.big_(<>)^(<>)<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"bigsum",
+		fmt([[sum_(<>)^(<>)<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
+	s(
+		"bigpi",
+		fmt([[product_(<>)^(<>)<>]], {
+			i(1, ""),
+			i(2, ""),
+			i(3, ""),
+		}, {
+			delimiters = "<>",
+		})
+	),
 })
 
 -- vim.keymap.set({ "i" }, "<C-k>", function() ls.expand() end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-L>", function()
-    ls.jump(1)
+	ls.jump(1)
 end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-J>", function()
-    ls.jump(-1)
+	ls.jump(-1)
 end, { silent = true })
