@@ -85,7 +85,7 @@ local function eval_visual_selection_with_bc()
         return
     end
 
-    selected_lines:insert(1, "scale = 4")
+    table.insert(selected_lines, 1, "scale = 4")
     local input = table.concat(selected_lines, "\n")
     if not input:match("\n$") then
         input = input .. "\n"
