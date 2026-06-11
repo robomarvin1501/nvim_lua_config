@@ -85,10 +85,15 @@ local function eval_visual_selection_with_bc()
         return
     end
 
+    selected_lines:insert(1, "scale = 4")
     local input = table.concat(selected_lines, "\n")
     if not input:match("\n$") then
         input = input .. "\n"
     end
+
+    -- Typst multiplication
+    input = input:gsub(" dot ", " * ")
+    input = input:gsub(" times ", " * ")
 
     local ok, job = pcall(vim.system, { "bc", "-l" }, {
         stdin = input,
@@ -111,6 +116,8 @@ local function eval_visual_selection_with_bc()
     local output = result.stdout or ""
     output = output:gsub("\r\n", "\n")
     output = output:gsub("\n+$", "")
+    output = output:gsub("(%d+%.%d*[1-9])0+$", "%1")
+    output = output:gsub("%.0+$", "")
 
     if output == "" then
         vim.notify("bc produced no output; not replacing selection", vim.log.levels.WARN)
