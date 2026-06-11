@@ -50,6 +50,104 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
+local function eval_visual_selection_with_bc()
+    if vim.fn.executable("bc") == 0 then
+        vim.notify("bc is not installed or not found in PATH", vim.log.levels.ERROR)
+        return
+    end
+
+    local visual_mode = vim.fn.mode()
+
+    -- In case this is ever called after leaving visual mode.
+    if visual_mode ~= "v" and visual_mode ~= "V" and visual_mode ~= "\22" then
+        visual_mode = vim.fn.visualmode()
+    end
+
+    if visual_mode == "\22" then
+        vim.notify("bc evaluation does not support visual block mode", vim.log.levels.ERROR)
+        return
+    end
+
+    local opts = {
+        type = visual_mode,
+        exclusive = false,
+        eol = true,
+    }
+
+    local start_pos = vim.fn.getpos("v")
+    local end_pos = vim.fn.getpos(".")
+
+    local selected_lines = vim.fn.getregion(start_pos, end_pos, opts)
+    local region = vim.fn.getregionpos(start_pos, end_pos, opts)
+
+    if #selected_lines == 0 or #region == 0 then
+        vim.notify("No visual selection found", vim.log.levels.WARN)
+        return
+    end
+
+    local input = table.concat(selected_lines, "\n")
+    if not input:match("\n$") then
+        input = input .. "\n"
+    end
+
+    local ok, job = pcall(vim.system, { "bc", "-l" }, {
+        stdin = input,
+        text = true,
+    })
+
+    if not ok then
+        vim.notify("Failed to run bc: " .. tostring(job), vim.log.levels.ERROR)
+        return
+    end
+
+    local result = job:wait(3000)
+
+    if result.code ~= 0 or (result.stderr and result.stderr ~= "") then
+        local err = result.stderr or ("bc exited with code " .. tostring(result.code))
+        vim.notify("bc error:\n" .. err, vim.log.levels.ERROR)
+        return
+    end
+
+    local output = result.stdout or ""
+    output = output:gsub("\r\n", "\n")
+    output = output:gsub("\n+$", "")
+
+    if output == "" then
+        vim.notify("bc produced no output; not replacing selection", vim.log.levels.WARN)
+        return
+    end
+
+    local replacement = vim.split(output, "\n", { plain = true })
+
+    local bufnr = 0
+
+    if visual_mode == "V" then
+        -- Linewise visual selection: replace complete selected lines.
+        local start_lnum = region[1][1][2]
+        local end_lnum = region[#region][1][2]
+
+        vim.api.nvim_buf_set_lines(bufnr, start_lnum - 1, end_lnum, false, replacement)
+    else
+        -- Characterwise visual selection: replace exact selected byte range.
+        local first = region[1][1]
+        local last = region[#region][2]
+
+        local start_row = first[2] - 1
+        local start_col = math.max(first[3] - 1, 0)
+
+        local end_row = last[2] - 1
+        local end_line = vim.api.nvim_buf_get_lines(bufnr, end_row, end_row + 1, true)[1] or ""
+        local end_col = math.min(last[3], #end_line)
+
+        vim.api.nvim_buf_set_text(bufnr, start_row, start_col, end_row, end_col, replacement)
+    end
+end
+
+vim.keymap.set("x", "<leader>bc", eval_visual_selection_with_bc, {
+    desc = "Evaluate visual selection with bc",
+    silent = true,
+})
+
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
