@@ -62,7 +62,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "typst",
-    callback = StartTypstWatchAndOpenZathura,
+    callback = function(ev)
+        vim.bo[ev.buf].textwidth = 120
+        vim.bo[ev.buf].formatexpr = ""
+        vim.bo[ev.buf].formatprg = ""
+
+        vim.schedule(function()
+            if vim.api.nvim_buf_is_valid(ev.buf) then
+                StartTypstWatch(ev.buf)
+            end
+        end)
+    end,
 })
 
 -- Cleanup Vimtex on exit

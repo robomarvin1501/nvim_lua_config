@@ -91,31 +91,24 @@ local function open_zathura_when_ready(pdf)
     end, 300)
 end
 
-function StartTypstWatchAndOpenZathura()
-    if not RunningTypst then
-        RunningTypst = true
-
-        vim.cmd.vsplit()
-        vim.cmd.wincmd("l")
-        vim.cmd("vertical resize 20")
-        vim.cmd("setlocal winfixwidth")
-
-        local root = vim.loop.cwd()
-        local file = vim.fn.expand("%:")
-        local pdf = vim.fn.expand("%:r") .. ".pdf"
-
-        -- Start typst watch in terminal
-        vim.cmd("terminal typst watch --root " .. root .. " " .. file)
-
-        -- Launch zathura (detached)
-        -- vim.fn.jobstart({ "zathura", pdf }, { detach = true })
-        open_zathura_when_ready(pdf)
-
-        vim.cmd.wincmd("h")
+typst_watch_job = nil
+function StartTypstWatch(bufnr)
+    if typst_watch_job then
+        return
     end
-end
 
-vim.keymap.set("n", "<leader>tw", StartTypstWatchAndOpenZathura)
+    local file = vim.api.nvim_buf_get_name(bufnr)
+    local root = vim.loop.cwd()
+    local pdf = vim.fn.fnamemodify(file, ":r") .. ".pdf"
+
+    typst_watch_job = vim.fn.jobstart({ "typst", "watch", "--root", root, file }, {
+        on_exit = function()
+            typst_watch_job = nil
+        end,
+    })
+
+    open_zathura_when_ready(pdf)
+end
 
 vim.keymap.set("n", "<leader>fo", function()
     local root = vim.loop.cwd()
